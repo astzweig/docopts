@@ -44,19 +44,19 @@ git checkout master
 git commit -a
 ```
 
-## 5. push on origin for a travis build
+## 5. push on origin for a ci build
 
 ```
 git push origin master
 ```
 
-## 6. remove travis hack macos if any
+## 6. remove reverse ssh hack macos if any
 
 ```
-sed -i -e '/travis.reverse_ssh_tunnel.sh/ s/^\([^#]\)/#\1/' .travis.yml
+sed -i -e '/ci.reverse_ssh_tunnel.sh/ s/^\([^#]\)/#\1/' .github/workflows/ci.yml
 ```
 
-## 7. push on docopts for a travis build
+## 7. push on docopts for a ci build
 
 ```
 git commit -a
@@ -82,7 +82,9 @@ git tag
 ## 9. build the release
 
 With [deploy.sh](https://github.com/opensource-expert/deploy.sh) installed in our PATH
+Note: `deploy.sh` use `docopts` and `docopts.sh` in the PATH
 
+The following will build all binary version from `deployment.yml`
 
 ```
 deploy.sh build
